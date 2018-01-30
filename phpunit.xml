@@ -14,4 +14,8 @@
             <directory suffix=".php">./test/</directory>
         </testsuite>
     </testsuites>
+    <listeners>
+        <listener class="ShoppingKart\VisualizerTestListener">
+        </listener>
+    </listeners>
 </phpunit>

@@ -26,8 +26,6 @@ abstract class EventSourcedCommandTestCase extends TestCase
     protected function assertPostConditions()
     {
         parent::assertPostConditions();
-
-        assertThat($this->scenario, self::isInstanceOf(EventSourcedCommandHandlerScenario::class));
     }
 
     public function scenario(): EventSourcedCommandHandlerScenario

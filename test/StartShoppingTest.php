@@ -16,10 +16,27 @@ use ShoppingKart\dsl\Event\customer_started_shopping;
 class StartShoppingTest extends EventSourcedCommandTestCase
 {
 
-    public function startShoppingTest()
+    public function testStartShopping()
     {
         $this->scenario()
             ->when(new start_shopping(1, 1, 1))
             ->then(new customer_started_shopping(1, 1));
+    }
+
+    public function testStartShoppingThenNothing()
+    {
+        $this->scenario()
+            ->when(new start_shopping(1, 1, 1))
+            ->thenNothing();
+    }
+
+
+    public function testStartShoppingAgain()
+    {
+        $this->scenario()
+            ->when(new start_shopping(1, 1, 1))
+            ->then(new customer_started_shopping(1,1))
+            ->when(new start_shopping(1,1,1))
+        ;
     }
 }
