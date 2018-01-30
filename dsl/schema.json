@@ -1,0 +1,234 @@
+{
+  "acme.online.shop": {
+    "commands": [
+      {
+        "type": "start_shopping",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "start_time",
+            "type": "timestamp",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "type": "add_product_to_cart",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "sku",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "add_time",
+            "type": "timestamp",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "type": "add_product_to_cart",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "sku",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "remove_time",
+            "type": "timestamp",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "type": "place_order",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "order_time",
+            "type": "timestamp",
+            "value": ""
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "type": "customer_started_shopping",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "type": "product_was_added_to_cart",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "price",
+            "type": "float",
+            "value": ""
+          },
+          {
+            "name": "sku",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "add_time",
+            "type": "timestamp",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "type": "product_was_removed_to_cart",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "price",
+            "type": "float",
+            "value": ""
+          },
+          {
+            "name": "sku",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "remove_time",
+            "type": "timestamp",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "type": "customer_place_order",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "products",
+            "type": "list",
+            "value": [
+              {
+                "name": "sku",
+                "type": "string",
+                "value": ""
+              },
+              {
+                "name": "quantity",
+                "type": "int",
+                "value": ""
+              },
+              {
+                "name": "price_in_cents",
+                "type": "int",
+                "value": ""
+              },
+              {
+                "name": "currency",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "name": "ordered_at",
+            "type": "timestamp",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "type": "customer_abandoned_cart",
+        "properties": [
+          {
+            "name": "customer_id",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "cart_id",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  }
+}
