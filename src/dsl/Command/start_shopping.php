@@ -1,7 +1,9 @@
 <?php
                 namespace ShoppingKart\dsl\Command;
 
-                class start_shopping implements \JsonSerializable {
+                use ShoppingKart\dsl\CommandInterface;
+
+                class start_shopping implements \JsonSerializable, CommandInterface {
 
                 public function __construct($customer_id,$cart_id,$start_time)
                 {
@@ -13,6 +15,7 @@ $this->start_time =  $start_time;
 
                 public function jsonSerialize() {
                     return [
+                        'name' => 'start_shopping',
                         'customer_id' =>  $this->customer_id,'cart_id' =>  $this->cart_id,'start_time' =>  $this->start_time
                     ];
                 }

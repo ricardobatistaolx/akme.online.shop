@@ -1,7 +1,9 @@
 <?php
                 namespace ShoppingKart\dsl\Command;
 
-                class add_product_to_cart implements \JsonSerializable {
+                use ShoppingKart\dsl\CommandInterface;
+
+                class add_product_to_cart implements \JsonSerializable, CommandInterface {
 
                 public function __construct($customer_id,$cart_id,$sku,$remove_time)
                 {
@@ -14,6 +16,7 @@ $this->remove_time =  $remove_time;
 
                 public function jsonSerialize() {
                     return [
+                        'name' => 'add_product_to_cart',
                         'customer_id' =>  $this->customer_id,'cart_id' =>  $this->cart_id,'sku' =>  $this->sku,'remove_time' =>  $this->remove_time
                     ];
                 }

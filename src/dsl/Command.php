@@ -38,6 +38,7 @@ class Command
     }
 
 
+
     public function __toString()
     {
         $methods = "";
@@ -57,7 +58,9 @@ class Command
         $class = "<?php
                 namespace ShoppingKart\dsl\Command;
 
-                class $this->name implements \JsonSerializable {
+                use ShoppingKart\dsl\CommandInterface;
+
+                class $this->name implements \JsonSerializable, CommandInterface {
 
                 public function __construct($variablesString)
                 {
@@ -66,6 +69,7 @@ class Command
 
                 public function jsonSerialize() {
                     return [
+                        'name' => '$this->name',
                         $serializedString
                     ];
                 }
@@ -75,4 +79,5 @@ class Command
         $class .= "}";
 
         return $class;
-    }}
+    }
+}

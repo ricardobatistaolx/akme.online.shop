@@ -1,7 +1,9 @@
 <?php
                 namespace ShoppingKart\dsl\Event;
 
-                class product_was_removed_to_cart implements \JsonSerializable {
+                use ShoppingKart\dsl\EventInterface;
+
+                class product_was_removed_to_cart implements \JsonSerializable, EventInterface {
 
                 public function __construct($customer_id,$cart_id,$price,$sku,$remove_time)
                 {
@@ -15,6 +17,7 @@ $this->remove_time =  $remove_time;
 
                 public function jsonSerialize() {
                     return [
+                        'name' => 'product_was_removed_to_cart',
                         'customer_id' =>  $this->customer_id,'cart_id' =>  $this->cart_id,'price' =>  $this->price,'sku' =>  $this->sku,'remove_time' =>  $this->remove_time
                     ];
                 }

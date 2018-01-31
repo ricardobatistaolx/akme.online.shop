@@ -56,7 +56,9 @@ class Event
         $class = "<?php
                 namespace ShoppingKart\dsl\Event;
 
-                class $this->name implements \JsonSerializable {
+                use ShoppingKart\dsl\EventInterface;
+
+                class $this->name implements \JsonSerializable, EventInterface {
 
                 public function __construct($variablesString)
                 {
@@ -65,6 +67,7 @@ class Event
 
                 public function jsonSerialize() {
                     return [
+                        'name' => '$this->name',
                         $serializedString
                     ];
                 }

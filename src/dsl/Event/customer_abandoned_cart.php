@@ -1,7 +1,9 @@
 <?php
                 namespace ShoppingKart\dsl\Event;
 
-                class customer_abandoned_cart implements \JsonSerializable {
+                use ShoppingKart\dsl\EventInterface;
+
+                class customer_abandoned_cart implements \JsonSerializable, EventInterface {
 
                 public function __construct($customer_id,$cart_id)
                 {
@@ -12,6 +14,7 @@ $this->cart_id =  $cart_id;
 
                 public function jsonSerialize() {
                     return [
+                        'name' => 'customer_abandoned_cart',
                         'customer_id' =>  $this->customer_id,'cart_id' =>  $this->cart_id
                     ];
                 }
