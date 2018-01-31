@@ -18,7 +18,12 @@ class EventStore
 
     public function addEvent($event)
     {
-        $this->metaevents[] = $event;
+        $name = explode(get_class($event), '\\');
+        $this->metaevents[] = [
+            'name' => end($name),
+            'payload' => $event,
+            'metadata' => 'something something'
+        ];
     }
 
     public static function fromFile()
