@@ -20,14 +20,16 @@ class StartShoppingTest extends EventSourcedCommandTestCase
     {
         $this->scenario()
             ->when(new start_shopping(1, 1, 1))
-            ->then(new customer_started_shopping(1, 1));
+            ->then(new customer_started_shopping(1, 1))
+            ->assert();
     }
 
     public function testStartShoppingThenNothing()
     {
         $this->scenario()
             ->when(new start_shopping(1, 1, 1))
-            ->thenNothing();
+            ->thenNothing()
+            ->assert();
     }
 
 
@@ -37,6 +39,7 @@ class StartShoppingTest extends EventSourcedCommandTestCase
             ->when(new start_shopping(1, 1, 1))
             ->then(new customer_started_shopping(1,1))
             ->when(new start_shopping(1,1,1))
+            ->assert()
         ;
     }
 }

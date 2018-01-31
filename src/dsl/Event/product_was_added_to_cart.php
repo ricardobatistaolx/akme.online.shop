@@ -1,7 +1,7 @@
 <?php
                 namespace ShoppingKart\dsl\Event;
-                
-                class product_was_added_to_cart {
+
+                class product_was_added_to_cart implements \JsonSerializable {
 
                 public function __construct($customer_id,$cart_id,$price,$sku,$add_time)
                 {
@@ -11,6 +11,12 @@ $this->price =  $price;
 $this->sku =  $sku; 
 $this->add_time =  $add_time; 
 
+                }
+
+                public function jsonSerialize() {
+                    return [
+                        'customer_id' =>  $this->customer_id,'cart_id' =>  $this->cart_id,'price' =>  $this->price,'sku' =>  $this->sku,'add_time' =>  $this->add_time
+                    ];
                 }
             
             private $customer_id;

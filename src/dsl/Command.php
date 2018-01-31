@@ -42,23 +42,32 @@ class Command
     {
         $methods = "";
         $variables = [];
+        $serialized = [];
         $sets = "";
 
         foreach ($this->properties->getItems() as $property) {
             $methods .= $property;
             $variables[] = '$' . $property->getName();
+            $serialized[] = "'{$property->getName()}' =>  \$this->{$property->getName()}";
             $sets .= "\$this->{$property->getName()} =  \${$property->getName()}; \n";
         }
 
         $variablesString = implode($variables, ',');
+        $serializedString = implode($serialized, ',');
         $class = "<?php
                 namespace ShoppingKart\dsl\Command;
-                
-                class $this->name {
+
+                class $this->name implements \JsonSerializable {
 
                 public function __construct($variablesString)
                 {
                     $sets
+                }
+
+                public function jsonSerialize() {
+                    return [
+                        $serializedString
+                    ];
                 }
             ";
 

@@ -1,7 +1,7 @@
 <?php
                 namespace ShoppingKart\dsl\Command;
-                
-                class place_order {
+
+                class place_order implements \JsonSerializable {
 
                 public function __construct($customer_id,$cart_id,$order_time)
                 {
@@ -9,6 +9,12 @@
 $this->cart_id =  $cart_id; 
 $this->order_time =  $order_time; 
 
+                }
+
+                public function jsonSerialize() {
+                    return [
+                        'customer_id' =>  $this->customer_id,'cart_id' =>  $this->cart_id,'order_time' =>  $this->order_time
+                    ];
                 }
             
             private $customer_id;

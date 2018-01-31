@@ -1,6 +1,6 @@
 <?php
 
-namespace ShoppingKart\Store;
+namespace ShoppingKart\store;
 
 class EventStore
 {
@@ -23,7 +23,7 @@ class EventStore
 
     public static function fromFile()
     {
-        $filename = dirname(__dir__) . '/resources/events.json';
+        $filename = dirname(dirname(__dir__)) . '/resources/events.json';
         $handle = fopen($filename, 'r');
         $contents = fread($handle, filesize($filename));
         fclose($handle);
@@ -32,7 +32,7 @@ class EventStore
 
     public function flush()
     {
-        $filename = dirname(__dir__) . '/resources/events.json';
+        $filename = dirname(dirname(__dir__)) . '/resources/events.json';
         $handle = fopen($filename, 'w+');
         fwrite($handle, json_encode($this->metaevents));
         fclose($handle);

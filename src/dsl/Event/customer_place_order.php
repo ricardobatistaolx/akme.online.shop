@@ -1,7 +1,7 @@
 <?php
                 namespace ShoppingKart\dsl\Event;
-                
-                class customer_place_order {
+
+                class customer_place_order implements \JsonSerializable {
 
                 public function __construct($customer_id,$cart_id,$products,$ordered_at)
                 {
@@ -10,6 +10,12 @@ $this->cart_id =  $cart_id;
 $this->products =  $products; 
 $this->ordered_at =  $ordered_at; 
 
+                }
+
+                public function jsonSerialize() {
+                    return [
+                        'customer_id' =>  $this->customer_id,'cart_id' =>  $this->cart_id,'products' =>  $this->products,'ordered_at' =>  $this->ordered_at
+                    ];
                 }
             
             private $customer_id;
